@@ -1,0 +1,43 @@
+ingredientes = []
+quantidades = []
+precos = []
+
+# Solicitar nome do ingrediente, quantidade e preço
+while True:
+    ingrediente = input("Digite o nome do ingrediente (ou 'sair' para finalizar): ")
+    
+    if ingrediente.lower() == 'sair':
+        break
+    
+    quantidade = float(input("Digite a quantidade do ingrediente: "))
+    preco = float(input("Digite o preço do ingrediente: "))
+    
+    ingredientes.append(ingrediente)
+    quantidades.append(quantidade)
+    precos.append(preco)
+
+# Mostrar lista de ingredientes, quantidade, preço unitário e preço total
+print("\nLista de ingredientes:")
+print("----------------------------")
+print("Ingrediente  |  Quantidade  |  Preço Unitário  |  Preço Total")
+print("----------------------------")
+
+total_custo = 0
+
+for i in range(len(ingredientes)):
+    preco_total = quantidades[i] * precos[i]
+    total_custo += preco_total
+    
+    print(f"{ingredientes[i]:12} | {quantidades[i]:12} | {precos[i]:15} | {preco_total:12}")
+
+# Calcular custo total do produto
+print("\nCusto total do produto:", total_custo)
+
+# Pedir percentual de lucro
+percentual_lucro = float(input("\nDigite o percentual de lucro desejado: "))
+
+# Calcular preço de venda
+preco_venda = total_custo + (total_custo * percentual_lucro / 100)
+
+# Mostrar preço de venda
+print("Preço de venda recomendado:", preco_venda)
